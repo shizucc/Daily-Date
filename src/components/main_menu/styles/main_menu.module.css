@@ -1,0 +1,14 @@
+.background {
+    width: 1080px;
+    height: 1920px;
+    background-size: cover;
+    background-image: url("src/components/main_menu/assets/background.png");
+}
+
+.motor {
+    width: 400px;
+    position: relative;
+    top: 1380px;
+    left: 750px;
+    /* transition: 200px 2s ease-in; */
+}
