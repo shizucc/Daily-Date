@@ -13,7 +13,7 @@ export default function Motor() {
   useEffect(() => {
     motor.current.classList.add(classes.vibrate);
     if (!motorState.stop) {
-      motor.current.style.left = `${motorState.positionX}px`;
+      motor.current.style.left = `${Math.round(motorState.positionX)}px`;
     }
     const forwardInterval = setInterval(() => {
       setMotorState((prev) => ({
@@ -49,7 +49,5 @@ export default function Motor() {
     };
   }, [motorState.image]);
 
-  return (
-    <img ref={motor} src={motorNoSmokeImage} className={classes.motor} alt="" />
-  );
+  return <img ref={motor} className={classes.motor} alt="" />;
 }

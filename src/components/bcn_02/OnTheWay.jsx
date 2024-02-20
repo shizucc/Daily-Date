@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import classes from "./styles/bcn_02.module.css";
 
 import Motor from "./components/Motor";
