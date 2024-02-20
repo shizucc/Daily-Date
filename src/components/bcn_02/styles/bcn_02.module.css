@@ -1,0 +1,28 @@
+.canvas {
+    background-image: url("src/components/bcn_02/assets/screen.png");
+    height: 1920px;
+    width: 1080px;
+    background-size: cover;
+    background-color: whitesmoke;
+    border: 6px solid salmon;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.motor {
+    position: relative;
+    height: 250px;
+    top: 1450px;
+}
+
+@keyframes vibrate {
+    0% { transform: translateY(0); }
+  25% { transform: translateY(-1px); }
+  50% { transform: translateY(0); }
+  75% { transform: translateY(1px); }
+  100% { transform: translateY(0); }
+}
+
+.vibrate {
+    animation: vibrate 0.5s infinite;
+}
