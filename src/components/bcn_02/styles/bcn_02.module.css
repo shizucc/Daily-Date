@@ -6,14 +6,58 @@
     background-color: whitesmoke;
     border: 6px solid salmon;
     margin: 0 auto;
+
     overflow: hidden;
 }
 
-.motor {
+.clouds {
     position: relative;
-    height: 250px;
-    top: 1450px;
 }
+.cloud {
+    position: absolute;
+    height: 250px;
+}
+.motor {
+    position:relative;
+    height: 230px;
+    top: 1500px;
+}
+
+.choicesBox {
+    position: absolute;
+    margin: 0 auto;
+    top: 250px;
+    padding-block: 3rem;
+    width: 55rem;
+    border: 15px solid #5D3652;
+    border-radius: 60px;
+    background-color: rgba(243, 64, 152, 0.82);
+    text-align: center;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.choicesBox h2 {
+    margin: 0;
+    margin-bottom: 1.5rem;
+    font-size: 5rem;
+    color: white;
+    font-weight: 700;
+}
+.choicesBox button {
+    width: 70%;
+    padding-block: 1.5rem;
+    border: 10px solid #5D3652;
+    border-radius: 25px;
+    margin-block: 0.2rem;
+    background-color: white;
+    color: black;
+    font-size: 2.5rem;
+    font-weight: 600;
+} 
 
 @keyframes vibrate {
     0% { transform: translateY(0); }
