@@ -6,14 +6,7 @@ import OnTheWay from "./components/bcn_02/OnTheWay";
 function App() {
   const [currentPage, setCurrentPage] = useState("mainMenu");
 
-  return (
-    <div className="game-container">
-      <div id="dialog-container"></div>
-      <div className="main-container">
-        <OnTheWay />
-      </div>
-    </div>
-  );
+  return <OnTheWay />;
 }
 
 export default App;

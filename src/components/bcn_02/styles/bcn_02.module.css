@@ -4,10 +4,6 @@
     width: 1080px;
     background-size: cover;
     background-color: whitesmoke;
-    border: 6px solid salmon;
-    margin: 0 auto;
-
-    overflow: hidden;
 }
 
 .clouds {
@@ -24,9 +20,9 @@
 }
 
 .choicesBox {
-    position: absolute;
-    margin: 0 auto;
-    top: 250px;
+    position:absolute;
+    margin-top: 15rem;
+    margin-inline: 5.5rem;
     padding-block: 3rem;
     width: 55rem;
     border: 15px solid #5D3652;

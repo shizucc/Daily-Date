@@ -2,7 +2,7 @@ import classes from "../styles/bcn_02.module.css";
 import motorNoSmokeImage from "../../../assets/global/img/motor_no_smoke.png";
 import motorWithSmokeImage from "../../../assets/global/img/motor_with_smoke.png";
 import { useEffect, useRef, useState } from "react";
-export default function Motor() {
+export default function Motor({ isBoost }) {
   const motor = useRef();
   const [motorState, setMotorState] = useState({
     image: motorWithSmokeImage,
@@ -10,6 +10,12 @@ export default function Motor() {
     stop: false,
     speed: 0.5,
   });
+
+  useEffect(() => {
+    if (isBoost) {
+      setMotorState((prev) => ({ ...prev, stop: false, speed: 4 }));
+    }
+  }, [isBoost]);
   useEffect(() => {
     motor.current.classList.add(classes.vibrate);
     if (!motorState.stop) {
@@ -22,7 +28,7 @@ export default function Motor() {
       }));
     }, 10);
 
-    if (motorState.positionX <= 300) {
+    if (motorState.positionX <= 300 && !isBoost) {
       setMotorState((prev) => ({ ...prev, stop: true }));
       clearInterval(forwardInterval);
     }
@@ -30,7 +36,7 @@ export default function Motor() {
     return () => {
       clearInterval(forwardInterval);
     };
-  }, [motorState.positionX, motorState.stop]);
+  }, [isBoost, motorState.positionX, motorState.stop]);
 
   useEffect(() => {
     motor.current.src = motorState.image;
