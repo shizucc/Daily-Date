@@ -23,8 +23,28 @@ body {
   z-index: 1;
 }
 
-.styled {
-  border: 3px salmon solid;
-  padding: 0.25rem;
-  background-color: white;
+
+.fade-out {
+  animation: fadeOut 2s ease forwards;
+}
+
+.fade-in {
+  animation: fadeIn 2s ease forwards
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

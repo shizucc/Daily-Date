@@ -13,7 +13,7 @@ const DIALOG_SCRIPT = {
   },
 };
 
-export default function OnTheWay() {
+export default function OnTheWay({ toNextPage }) {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [dialogResponse, setDialogResponse] = useState(null);
   const [isMotorBoost, setIsMotorBoost] = useState(false);
@@ -25,12 +25,13 @@ export default function OnTheWay() {
     if (selectedAnswer === "RSM") {
       setDialogResponse("Ayo Gas!");
       setIsMotorBoost(true);
+      toNextPage("bcn_03a");
     } else if (selectedAnswer === "Makan Seblak") {
       setDialogResponse("Masih pagi tau! Nanti perut kamu sakit");
     } else if (selectedAnswer === "Taman Mas Kemambang") {
       setDialogResponse("Nanti aja kalo udah sore");
     }
-  }, [selectedAnswer]);
+  }, [selectedAnswer, toNextPage]);
 
   return (
     <div className={classes.canvas}>
