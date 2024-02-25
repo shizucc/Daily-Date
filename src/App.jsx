@@ -8,7 +8,10 @@ function App() {
 
   return (
     <div className="game-container">
-      <OnTheWay />
+      <div id="dialog-container"></div>
+      <div className="main-container">
+        <OnTheWay />
+      </div>
     </div>
   );
 }
