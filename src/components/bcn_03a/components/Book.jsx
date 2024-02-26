@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import classes from "../styles/bcn_03a.module.css";
 import { numberToPx } from "../../../utils/converter";
-export default function Book({ img, posX, posY, onSelect }) {
+export default function Book({ img, posX, posY, ...props }) {
   const book = useRef();
 
   useEffect(() => {
@@ -13,8 +13,8 @@ export default function Book({ img, posX, posY, onSelect }) {
       ref={book}
       className={classes.book}
       src={img}
-      onClick={() => onSelect(img)}
       alt="book"
+      {...props}
     ></img>
   );
 }

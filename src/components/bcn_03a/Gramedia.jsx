@@ -1,13 +1,9 @@
 import classes from "./styles/bcn_03a.module.css";
-import book1Img from "./assets/imas.jpg";
-import book2Img from "./assets/naruto.jpg";
-import book3Img from "./assets/record-of-ragnarok.jpg";
-import book4Img from "./assets/sakura-trick.jpg";
-import book5Img from "./assets/yona.jpg";
-import book6Img from "./assets/bl.jpg";
 import Book from "./components/Book";
 import { useEffect, useState } from "react";
 import DialogResponse from "../bcn_02/components/DialogResponse";
+import Modal from "../global_components/Modal";
+import { BOOKS } from "./books";
 
 const DIALOG_RESPONSE_SCRIPT = [
   "Liat-Liat Komik dulu yuk!",
@@ -15,9 +11,13 @@ const DIALOG_RESPONSE_SCRIPT = [
   "Terutama BL!",
   "Kalo dah bosen bilang ya!",
 ];
-export default function Gramedia() {
-  const [dialogResponseIndex, setDialogResponseIndex] = useState(0);
 
+export default function Gramedia({ toNextPage }) {
+  const [dialogResponseIndex, setDialogResponseIndex] = useState(0);
+  const [bookModal, setBookModal] = useState({
+    isOpen: false,
+    bookIndex: 0,
+  });
   useEffect(() => {
     let interval;
     const timeout = setTimeout(() => {
@@ -38,52 +38,74 @@ export default function Gramedia() {
       clearInterval(interval);
     };
   }, []);
-  function handleSelectBook(book) {
-    console.log(book);
+  function handleSelectBook(bookIndex) {
+    console.log(bookIndex);
+    setBookModal({ isOpen: true, bookIndex: bookIndex });
+  }
+
+  function handleCloseBookModal() {
+    setBookModal((prev) => ({ ...prev, isOpen: false }));
   }
   return (
     <div className={classes.canvas}>
+      <Modal open={bookModal.isOpen} onClose={handleCloseBookModal}>
+        <article className={classes.bookModal}>
+          <img src={BOOKS[bookModal.bookIndex].coverImage} alt="book_cover" />
+          <section>
+            <h3>{BOOKS[bookModal.bookIndex].title}</h3>
+            <p>{BOOKS[bookModal.bookIndex].description}</p>
+            <button onClick={handleCloseBookModal}>Baca Lainnya</button>
+          </section>
+        </article>
+      </Modal>
       <DialogResponse
         dialogText={DIALOG_RESPONSE_SCRIPT[dialogResponseIndex]}
       />
       <div className={classes.books}>
         <Book
-          img={book1Img}
+          img={BOOKS[0].coverImage}
           posX={100}
           posY={670}
-          onSelect={handleSelectBook}
+          onClick={() => handleSelectBook(0)}
         />
         <Book
-          img={book2Img}
+          img={BOOKS[1].coverImage}
           posX={100}
           posY={925}
-          onSelect={handleSelectBook}
+          onClick={() => handleSelectBook(1)}
         />
         <Book
-          img={book3Img}
+          img={BOOKS[2].coverImage}
           posX={100}
           posY={1175}
-          onSelect={handleSelectBook}
+          onClick={() => handleSelectBook(2)}
         />
         <Book
-          img={book4Img}
+          img={BOOKS[3].coverImage}
           posX={870}
           posY={670}
-          onSelect={handleSelectBook}
+          onClick={() => handleSelectBook(3)}
         />
         <Book
-          img={book5Img}
+          img={BOOKS[4].coverImage}
           posX={870}
           posY={925}
-          onSelect={handleSelectBook}
+          onClick={() => handleSelectBook(4)}
         />
         <Book
-          img={book6Img}
+          img={BOOKS[5].coverImage}
           posX={870}
           posY={1175}
-          onSelect={handleSelectBook}
+          onClick={() => handleSelectBook(5)}
         />
       </div>
+
+      <button
+        className={classes.timezoneButton}
+        onClick={() => toNextPage("bcn_04a")}
+      >
+        Ke <br /> TimeZone
+      </button>
     </div>
   );
 }

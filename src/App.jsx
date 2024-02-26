@@ -44,7 +44,7 @@ function App() {
   return (
     <>
       {currentPage === "bcn_02" && <OnTheWay toNextPage={handleNextPage} />}
-      {currentPage === "bcn_03a" && <Gramedia />}
+      {currentPage === "bcn_03a" && <Gramedia toNextPage={handleNextPage} />}
     </>
   );
 }
