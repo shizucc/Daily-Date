@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 
 import OnTheWay from "./components/bcn_02/OnTheWay";
 import Gramedia from "./components/bcn_03a/Gramedia";
+import Timezone from "./components/bcn_04a/Timezone";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("bcn_02");
@@ -45,6 +46,7 @@ function App() {
     <>
       {currentPage === "bcn_02" && <OnTheWay toNextPage={handleNextPage} />}
       {currentPage === "bcn_03a" && <Gramedia toNextPage={handleNextPage} />}
+      {currentPage === "bcn_04a" && <Timezone />}
     </>
   );
 }
