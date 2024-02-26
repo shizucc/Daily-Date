@@ -14,29 +14,74 @@ export default function Timezone() {
     isPress: false,
   });
 
-  const [cranePosition, setCranePosition] = useState({
-    cranePillar: 480,
-    craneCapture: 357,
+  const [craneState, setCraneState] = useState({
+    cranePillarX: 480,
+    cranePillarH: 100,
+    craneCaptureX: 357,
+    craneCaptureY: 490,
   });
 
+  const [isCaptured, setIsCaptured] = useState(false);
+
   useEffect(() => {
-    cranePillar.current.style.left = numberToPx(cranePosition.cranePillar);
-    craneCapture.current.style.left = numberToPx(cranePosition.craneCapture);
-  }, [cranePosition]);
+    cranePillar.current.style.height = numberToPx(craneState.cranePillarH);
+    cranePillar.current.style.left = numberToPx(craneState.cranePillarX);
+    craneCapture.current.style.left = numberToPx(craneState.craneCaptureX);
+    craneCapture.current.style.top = numberToPx(craneState.craneCaptureY);
+  }, [craneState]);
+
+  useEffect(() => {
+    if (isCaptured) {
+      const intervalDown = setInterval(() => {
+        if (craneState.cranePillarH >= 600) {
+          clearInterval(intervalDown);
+
+          setTimeout(() => {
+            const intervalUp = setInterval(() => {
+              setCraneState((prev) => ({
+                ...prev,
+                cranePillarH: prev.cranePillarH - 10,
+                craneCaptureY: prev.craneCaptureY - 10,
+              }));
+            }, 10);
+          }, 2000);
+        } else {
+          setCraneState((prev) => ({
+            ...prev,
+            cranePillarH: prev.cranePillarH + 10,
+            craneCaptureY: prev.craneCaptureY + 10,
+          }));
+        }
+      }, 10);
+      return () => {
+        clearInterval(intervalDown);
+      };
+    }
+  }, [craneState.cranePillarH, isCaptured]);
 
   useEffect(() => {
     let intervalId;
     const handlePressStart = () => {
       intervalId = setInterval(() => {
-        if (pressed.direction === "left") {
-          setCranePosition((prev) => ({
-            cranePillar: prev.cranePillar - 1,
-            craneCapture: prev.craneCapture - 1,
+        if (
+          pressed.direction === "left" &&
+          craneState.craneCaptureX >= 130 &&
+          isCaptured === false
+        ) {
+          setCraneState((prev) => ({
+            ...prev,
+            cranePillarX: prev.cranePillarX - 1,
+            craneCaptureX: prev.craneCaptureX - 1,
           }));
-        } else {
-          setCranePosition((prev) => ({
-            cranePillar: prev.cranePillar + 1,
-            craneCapture: prev.craneCapture + 1,
+        } else if (
+          pressed.direction === "right" &&
+          craneState.craneCaptureX <= 644 &&
+          isCaptured === false
+        ) {
+          setCraneState((prev) => ({
+            ...prev,
+            cranePillarX: prev.cranePillarX + 1,
+            craneCaptureX: prev.craneCaptureX + 1,
           }));
         }
       }, 10);
@@ -55,7 +100,7 @@ export default function Timezone() {
     return () => {
       clearInterval(intervalId);
     };
-  }, [pressed]);
+  }, [craneState.craneCaptureX, isCaptured, pressed]);
 
   return (
     <div className={classes.canvas}>
@@ -80,7 +125,12 @@ export default function Timezone() {
           onMouseUp={() => setPressed({ direction: "left", isPress: false })}
           onMouseLeave={() => setPressed({ direction: "left", isPress: false })}
         />
-        <img className={classes.btnPress} src={pressButton} alt="btn_press" />
+        <img
+          className={classes.btnPress}
+          onClick={() => setIsCaptured(true)}
+          src={pressButton}
+          alt="btn_press"
+        />
         <img
           className={classes.btnRight}
           src={rightButton}

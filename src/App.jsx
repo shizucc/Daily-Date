@@ -5,7 +5,7 @@ import Gramedia from "./components/bcn_03a/Gramedia";
 import Timezone from "./components/bcn_04a/Timezone";
 
 function App() {
-  const [currentPage, setCurrentPage] = useState("bcn_02");
+  const [currentPage, setCurrentPage] = useState("bcn_04a");
   const [isPageDimmed, setIsPageDimmed] = useState(false);
 
   function fadeIn() {
