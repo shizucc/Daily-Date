@@ -1,0 +1,39 @@
+.canvas {
+    background-image: url("../assets/screen.png");
+    height: 1920px;
+    width: 1080px;
+    background-size: cover;
+    background-color: whitesmoke;
+}
+
+.books {
+    position: relative;
+}
+
+.book {
+    position: absolute;
+    height: 12rem;
+    width: 8.5rem;
+    border: 0.5rem solid #5D3652;
+    border-radius: 1rem;
+    animation: shake 4s infinite;
+}
+
+.book:active {
+    opacity: 0.75;
+}
+
+@keyframes shake {
+    0%, 100% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(5deg);
+    }
+    50% {
+      transform: rotate(-5deg);
+    }
+    75% {
+      transform: rotate(5deg);
+    }
+  }

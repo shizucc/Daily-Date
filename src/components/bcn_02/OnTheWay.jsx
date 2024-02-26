@@ -14,24 +14,28 @@ const DIALOG_SCRIPT = {
 };
 
 export default function OnTheWay({ toNextPage }) {
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [dialogResponse, setDialogResponse] = useState(null);
   const [isMotorBoost, setIsMotorBoost] = useState(false);
-  function handleSelectAnswer(answer) {
-    setSelectedAnswer(answer);
-  }
 
-  useEffect(() => {
-    if (selectedAnswer === "RSM") {
+  function handleSelectAnswer(answer) {
+    if (answer === "RSM") {
       setDialogResponse("Ayo Gas!");
       setIsMotorBoost(true);
       toNextPage("bcn_03a");
-    } else if (selectedAnswer === "Makan Seblak") {
+    } else if (answer === "Makan Seblak") {
       setDialogResponse("Masih pagi tau! Nanti perut kamu sakit");
-    } else if (selectedAnswer === "Taman Mas Kemambang") {
+      const timeout = setTimeout(() => {
+        setDialogResponse(null);
+      }, 5000);
+      return () => clearTimeout(timeout);
+    } else if (answer === "Taman Mas Kemambang") {
       setDialogResponse("Nanti aja kalo udah sore");
+      const timeout = setTimeout(() => {
+        setDialogResponse(null);
+      }, 5000);
+      return () => clearTimeout(timeout);
     }
-  }, [selectedAnswer, toNextPage]);
+  }
 
   return (
     <div className={classes.canvas}>

@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
 
 import OnTheWay from "./components/bcn_02/OnTheWay";
+import Gramedia from "./components/bcn_03a/Gramedia";
 
 function App() {
-  const [currentPage, setCurrentPage] = useState("mainMenu");
+  const [currentPage, setCurrentPage] = useState("bcn_02");
   const [isPageDimmed, setIsPageDimmed] = useState(false);
 
   function fadeIn() {
@@ -25,7 +26,6 @@ function App() {
   }, [isPageDimmed]);
 
   const handleNextPage = useCallback(function handleNextPage(page) {
-    console.log("loop");
     const timerDimmed = setTimeout(() => {
       setIsPageDimmed(true);
     }, 1000);
@@ -41,7 +41,12 @@ function App() {
     };
   }, []);
 
-  return <OnTheWay toNextPage={handleNextPage} />;
+  return (
+    <>
+      {currentPage === "bcn_02" && <OnTheWay toNextPage={handleNextPage} />}
+      {currentPage === "bcn_03a" && <Gramedia />}
+    </>
+  );
 }
 
 export default App;
