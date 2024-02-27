@@ -27,16 +27,46 @@ export default function Crane({
   }, [craneState]);
 
   useEffect(() => {
-    if (isPressCapture) {
-      const intervalDown = setInterval(() => {
+    let intervalDown;
+    let intervalUp;
+    if (isPressCapture && captureState === "down") {
+      intervalDown = setInterval(() => {
         setCraneState((prev) => ({
           ...prev,
-          cranePillarH: prev.cranePillarH + 1,
-          craneCaptureY: prev.craneCaptureY + 1,
+          cranePillarH: prev.cranePillarH + 10,
+          craneCaptureY: prev.craneCaptureY + 10,
         }));
-      }, 80);
+      }, 10);
+      const timeout = setTimeout(() => {
+        clearInterval(intervalDown);
+        setTimeout(() => {
+          console.log("saatnya up");
+          setCaptureState("up");
+        }, 500);
+      }, 500);
+      return () => clearTimeout(timeout);
     }
-  }, [craneState.cranePillarH, isPressCapture]);
+
+    if (isPressCapture && captureState === "up") {
+      console.log("up");
+      intervalUp = setInterval(() => {
+        setCraneState((prev) => ({
+          ...prev,
+          cranePillarH: prev.cranePillarH - 10,
+          craneCaptureY: prev.craneCaptureY - 10,
+        }));
+      }, 10);
+      setTimeout(() => {
+        clearInterval(intervalUp);
+        setTimeout(() => {
+          setCaptureState("done");
+        }, 500);
+      }, 500);
+    }
+    return () => {
+      clearInterval(intervalDown);
+    };
+  }, [captureState, isPressCapture]);
 
   useEffect(() => {
     let intervalId;
