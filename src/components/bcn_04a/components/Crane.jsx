@@ -1,12 +1,13 @@
 import classes from "../styles/bcn_04a.module.css";
 import { useCallback, useEffect, useRef, useState } from "react";
 import craneCaptureImg from "../assets/crane_capture.png";
+import craneCaptureDone from "../assets/crane_capture_done.png";
 import { numberToPx } from "../../../utils/converter";
 export default function Crane({
   isPressLeft,
   isPressCapture,
   isPressRight,
-  isDoneCapture,
+  onDoneCapture,
 }) {
   const craneCapture = useRef();
   const cranePillar = useRef();
@@ -40,7 +41,7 @@ export default function Crane({
       const timeout = setTimeout(() => {
         clearInterval(intervalDown);
         setTimeout(() => {
-          console.log("saatnya up");
+          craneCapture.current.src = craneCaptureDone;
           setCaptureState("up");
         }, 500);
       }, 500);
@@ -48,7 +49,6 @@ export default function Crane({
     }
 
     if (isPressCapture && captureState === "up") {
-      console.log("up");
       intervalUp = setInterval(() => {
         setCraneState((prev) => ({
           ...prev,
@@ -60,13 +60,14 @@ export default function Crane({
         clearInterval(intervalUp);
         setTimeout(() => {
           setCaptureState("done");
+          onDoneCapture("yey");
         }, 500);
       }, 500);
     }
     return () => {
       clearInterval(intervalDown);
     };
-  }, [captureState, isPressCapture]);
+  }, [captureState, isPressCapture, onDoneCapture]);
 
   useEffect(() => {
     let intervalId;
@@ -110,6 +111,7 @@ export default function Crane({
       clearInterval(intervalId);
     };
   }, [craneState.craneCaptureX, isPressCapture, isPressLeft, isPressRight]);
+
   return (
     <section className={classes.craneContainer}>
       <div ref={cranePillar} className={classes.cranePillar}></div>

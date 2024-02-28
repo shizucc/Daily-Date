@@ -62,3 +62,43 @@
     position: absolute;
 }
  
+
+.presentModal{
+    display: flex;
+    align-items: center;
+    padding: 1.25rem;
+  }
+  
+  .presentModal img{
+    width: 27rem;
+  }
+  .presentModal section {
+    padding: 3rem;
+  }
+
+  .presentModal h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.5);
+  }
+  .presentModal h3 {
+    font-size: 3rem;
+    margin: 0;
+  }
+  .presentModal p {
+    font-size: 2rem;
+  }
+  .presentModal button {
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 0.5rem solid #5D3652;
+    font-size: 2.5rem;
+    font-weight:600;
+    color: #5D3652;
+    background-color:whitesmoke;
+  }
+
+  .presentModal button:active{
+    background-color: gray;
+  }
