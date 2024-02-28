@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import DialogResponse from "../../bcn_02/components/DialogResponse";
+import DialogResponse from "./DialogResponse";
 
 export default function RunningResponseDialog({ script, onComplete }) {
   const [dialogResponseIndex, setDialogResponseIndex] = useState(0);

@@ -10,7 +10,7 @@ import { useState, useCallback, useMemo } from "react";
 import Crane from "./components/Crane";
 import Modal from "../global_components/Modal";
 import { getRandomItemFromList } from "./util";
-import RunningResponseDialog from "./components/RunningResponeDialog";
+import RunningResponseDialog from "../global_components/RunningResponeDialog";
 
 const PRESENTS = [
   {

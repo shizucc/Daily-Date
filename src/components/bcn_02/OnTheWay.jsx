@@ -2,8 +2,8 @@ import classes from "./styles/bcn_02.module.css";
 
 import Motor from "./components/Motor";
 import Clouds from "./components/Clouds";
-import Dialog from "./components/Dialog";
-import DialogResponse from "./components/DialogResponse";
+import Dialog from "../global_components/Dialog";
+import DialogResponse from "../global_components/DialogResponse";
 import { useEffect, useState } from "react";
 
 const DIALOG_SCRIPT = {

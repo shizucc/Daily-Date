@@ -1,7 +1,7 @@
 import classes from "./styles/bcn_03a.module.css";
 import Book from "./components/Book";
 import { useEffect, useState } from "react";
-import DialogResponse from "../bcn_02/components/DialogResponse";
+import DialogResponse from "../global_components/DialogResponse";
 import Modal from "../global_components/Modal";
 import { BOOKS } from "./books";
 
