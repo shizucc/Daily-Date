@@ -2,8 +2,10 @@ import { useState } from "react";
 import Ingredients from "./components/Ingredients";
 import { INGREDIENT_LIST } from "./ingredient_list";
 import classes from "./styles/bcn_04b.module.css";
+import Bowl from "./components/Bowl";
+import NextPageButton from "../global_components/NextPageButton";
 
-export default function Seblak() {
+export default function Seblak({ toNextPage }) {
   const [selectedIngredients, setSelectedIngredients] = useState([]);
   function handleSelectIngredients(identifier) {
     INGREDIENT_LIST.forEach((ingredient) => {
@@ -14,9 +16,11 @@ export default function Seblak() {
       }
     });
   }
+
   return (
     <div className={classes.canvas}>
       <Ingredients onSelect={handleSelectIngredients} />
+      <Bowl selectedIngredients={selectedIngredients} />
       <section className={classes.note}>
         <ul>
           {selectedIngredients.map((selectedIngredient, index) => (
@@ -26,6 +30,10 @@ export default function Seblak() {
           ))}
         </ul>
       </section>
+      <NextPageButton
+        title={"Meja Makan"}
+        onClick={() => toNextPage("bcn_05b")}
+      />
     </div>
   );
 }
