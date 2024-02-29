@@ -4,9 +4,10 @@ import OnTheWay from "./components/bcn_02/OnTheWay";
 import Gramedia from "./components/bcn_03a/Gramedia";
 import Timezone from "./components/bcn_04a/Timezone";
 import OnTheWayDay from "./components/bcn_03b/OnTheWayDay";
+import Seblak from "./components/bcn_04b/Seblak";
 
 function App() {
-  const [currentPage, setCurrentPage] = useState("bcn_02");
+  const [currentPage, setCurrentPage] = useState("bcn_04b");
   const [isPageDimmed, setIsPageDimmed] = useState(false);
 
   function fadeIn() {
@@ -48,7 +49,8 @@ function App() {
       {currentPage === "bcn_02" && <OnTheWay toNextPage={handleNextPage} />}
       {currentPage === "bcn_03a" && <Gramedia toNextPage={handleNextPage} />}
       {currentPage === "bcn_04a" && <Timezone toNextPage={handleNextPage} />}
-      {currentPage === "bcn_03b" && <OnTheWayDay />}
+      {currentPage === "bcn_03b" && <OnTheWayDay toNextPage={handleNextPage} />}
+      {currentPage === "bcn_04b" && <Seblak toNextPage={null} />}
     </>
   );
 }
