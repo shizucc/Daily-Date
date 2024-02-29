@@ -1,9 +1,35 @@
-import classes from "../styles/bcn_02.module.css";
-import motorNoSmokeImage from "../../../assets/global/img/motor_no_smoke.png";
-import motorWithSmokeImage from "../../../assets/global/img/motor_with_smoke.png";
+import motorNoSmokeImage from "../../assets/global/img/motor_no_smoke.png";
+import motorWithSmokeImage from "../../assets/global/img/motor_with_smoke.png";
 import { useEffect, useRef, useState } from "react";
+import styled from "styled-components";
+
+const StyledMotor = styled.img`
+  position: relative;
+  height: 230px;
+  top: 1500px;
+  animation: vibrate 0.5s infinite;
+  @keyframes vibrate {
+    0% {
+      transform: translateY(0);
+    }
+    25% {
+      transform: translateY(-1px);
+    }
+    50% {
+      transform: translateY(0);
+    }
+    75% {
+      transform: translateY(1px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+`;
+
 export default function Motor({ isBoost }) {
   const motor = useRef();
+
   const [motorState, setMotorState] = useState({
     image: motorWithSmokeImage,
     positionX: 1000,
@@ -17,7 +43,6 @@ export default function Motor({ isBoost }) {
     }
   }, [isBoost]);
   useEffect(() => {
-    motor.current.classList.add(classes.vibrate);
     if (!motorState.stop) {
       motor.current.style.left = `${Math.round(motorState.positionX)}px`;
     }
@@ -55,5 +80,5 @@ export default function Motor({ isBoost }) {
     };
   }, [motorState.image]);
 
-  return <img ref={motor} className={classes.motor} alt="" />;
+  return <StyledMotor ref={motor} alt="" />;
 }

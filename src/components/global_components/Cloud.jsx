@@ -1,9 +1,14 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useRef, useState } from "react";
-import classes from "../styles/bcn_02.module.css";
-import cloud1Image from "../../../assets/global/img/cloud_1.png";
-import cloud2Image from "../../../assets/global/img/cloud_2.png";
-import { numberToPx } from "../../../utils/converter";
+import cloud1Image from "../../assets/global/img/cloud_1.png";
+import cloud2Image from "../../assets/global/img/cloud_2.png";
+import { numberToPx } from "../../utils/converter.js";
+import styled from "styled-components";
+
+const StyledCloud = styled.img`
+  position: absolute;
+  height: 250px;
+`;
 
 export default function Cloud({ initialPosX, initialPosY, moveSpeed }) {
   const cloud = useRef();
@@ -31,5 +36,5 @@ export default function Cloud({ initialPosX, initialPosY, moveSpeed }) {
     cloud.current.style.top = numberToPx(initialPosY);
     cloud.current.style.left = numberToPx(initialPosX);
   }, [initialPosX, initialPosY]);
-  return <img ref={cloud} className={classes.cloud} alt="" />;
+  return <StyledCloud ref={cloud} alt="" />;
 }

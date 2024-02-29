@@ -2,58 +2,14 @@ import classes from "./styles/bcn_04a.module.css";
 import leftButton from "./assets/left_button.png";
 import rightButton from "./assets/right_button.png";
 import pressButton from "./assets/press_button.png";
-import present1 from "./assets/bl.jpg";
-import present2 from "./assets/doll.png";
-import present3 from "./assets/watch.png";
+import { PRESENTS } from "./presents";
+import { DIALOG_RESPONSE_SCRIPT } from "./response_dialog_script";
 import dollsImg from "./assets/dolls.png";
 import { useState, useCallback, useMemo } from "react";
 import Crane from "./components/Crane";
 import Modal from "../global_components/Modal";
 import { getRandomItemFromList } from "./util";
 import RunningResponseDialog from "../global_components/RunningResponeDialog";
-
-const PRESENTS = [
-  {
-    title: "Komik Haram",
-    description: "Nida Gaboleh BACA!",
-    image: present1,
-  },
-  {
-    title: "Jam Tangan",
-    description:
-      "Jam Tangan Mewah berlapis Berlian dan emas 24 karat TAPI BOONG",
-    image: present3,
-  },
-  {
-    title: "Boneka Beruang",
-    description: "Pokonya imut bingits",
-    image: present2,
-  },
-];
-
-const DIALOG_RESPONSE_SCRIPT = {
-  bl: [
-    "Astaga kok bisa dapet itu",
-    "Habis ini buang jauh-jauh benda itu",
-    "Kalo perlu, bakar sekalian",
-    "Hadehh",
-    "Btw udah puas kan mainnya?",
-    "Mau ke tempat lain ga?",
-  ],
-  dool: [
-    "Wih dapet boneka",
-    "Cowo apa cewe si",
-    "Engga bakal aku minta kok!, jangan pasang muka gitu dong",
-    "Btw udah puas kan mainnya?",
-    "Mau ke tempat lain ga?",
-  ],
-  watch: [
-    "Mesin macam apa ini kok bisa-bisanya dapat jam tangan",
-    "Tapi bagus njr, pake kamu cocok kali ya",
-    "Btw udah puas kan mainnya?",
-    "Mau ke tempat lain ga?",
-  ],
-};
 
 export default function Timezone({ toNextPage }) {
   let present = useMemo(() => getRandomItemFromList(PRESENTS), []);
@@ -106,7 +62,7 @@ export default function Timezone({ toNextPage }) {
               <button
                 onClick={() => {
                   setIsOpenPresentDialog(false);
-                  toNextPage("bcn_05a");
+                  toNextPage("bcn_03b");
                 }}
               >
                 AYO

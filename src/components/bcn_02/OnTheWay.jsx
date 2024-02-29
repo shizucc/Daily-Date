@@ -1,10 +1,10 @@
 import classes from "./styles/bcn_02.module.css";
 
-import Motor from "./components/Motor";
-import Clouds from "./components/Clouds";
+import Motor from ".././global_components/Motor";
+import Clouds from ".././global_components/Clouds";
 import Dialog from "../global_components/Dialog";
 import DialogResponse from "../global_components/DialogResponse";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const DIALOG_SCRIPT = {
   initialQuestion: {
