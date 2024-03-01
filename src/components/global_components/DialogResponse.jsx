@@ -7,6 +7,7 @@ const StyledDialogResponse = styled.div`
   margin: 2rem;
   border-radius: 1rem;
   background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 
   & p {
     font-size: 3rem;

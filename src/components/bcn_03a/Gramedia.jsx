@@ -39,7 +39,6 @@ export default function Gramedia({ toNextPage }) {
     };
   }, []);
   function handleSelectBook(bookIndex) {
-    console.log(bookIndex);
     setBookModal({ isOpen: true, bookIndex: bookIndex });
   }
 
@@ -48,7 +47,7 @@ export default function Gramedia({ toNextPage }) {
   }
   return (
     <div className={classes.canvas}>
-      <Modal open={bookModal.isOpen} onClose={handleCloseBookModal}>
+      <Modal isOpen={bookModal.isOpen}>
         <article className={classes.bookModal}>
           <img src={BOOKS[bookModal.bookIndex].coverImage} alt="book_cover" />
           <section>

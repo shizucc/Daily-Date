@@ -1,34 +1,30 @@
-import { useRef, useEffect } from "react";
-import { createPortal } from "react-dom";
 import styled from "styled-components";
 
-const StyledDialog = styled.dialog`
+const StyledDialogContainer = styled.div`
   position: relative;
-  min-width: 30rem;
+`;
+
+const StyledDialogContent = styled.div`
+  position: absolute;
+  min-width: 60rem;
   max-width: 60rem;
   padding: 0;
   z-index: 2;
   border-radius: 1.5rem;
+  background-color: whitesmoke;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   animation: slide-down-fade-in 0.3s ease-out forwards;
+  top: 300px;
+  left: 50px;
 `;
 
-function Modal({ open, children, onClose }) {
-  const dialog = useRef();
-
-  useEffect(() => {
-    if (open) {
-      dialog.current.showModal();
-    } else {
-      dialog.current.close();
-    }
-  }, [open]);
-
-  return createPortal(
-    <StyledDialog ref={dialog} onClose={onClose}>
-      {open ? children : null}
-    </StyledDialog>,
-    document.getElementById("modal")
+function Modal({ isOpen, children }) {
+  return (
+    isOpen && (
+      <StyledDialogContainer>
+        <StyledDialogContent>{children}</StyledDialogContent>
+      </StyledDialogContainer>
+    )
   );
 }
 

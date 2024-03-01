@@ -1,6 +1,4 @@
 import classes from "./styles/bcn_04a.module.css";
-import leftButton from "./assets/left_button.png";
-import rightButton from "./assets/right_button.png";
 import pressButton from "./assets/press_button.png";
 import { PRESENTS } from "./presents";
 import { DIALOG_RESPONSE_SCRIPT } from "./response_dialog_script";
@@ -48,10 +46,7 @@ export default function Timezone({ toNextPage }) {
           }}
         />
       )}
-      <Modal
-        open={isOpenPresentDialog}
-        onClose={() => setIsOpenPresentDialog(false)}
-      >
+      <Modal isOpen={isOpenPresentDialog}>
         <article className={classes.presentModal}>
           <img src={present.image} alt="present" />
           <section>
@@ -89,21 +84,21 @@ export default function Timezone({ toNextPage }) {
         <img className={classes.dolls} src={dollsImg} alt="" />
       </section>
       <section className={classes.buttons}>
-        <img
+        {/* <img
           className={classes.btnLeft}
           src={leftButton}
           alt="btn_left"
           onMouseDown={() => setPressed({ direction: "left", isPress: true })}
           onMouseUp={() => setPressed({ direction: "left", isPress: false })}
           onMouseLeave={() => setPressed({ direction: "left", isPress: false })}
-        />
+        /> */}
         <img
           className={classes.btnPress}
           onClick={() => setIsCaptured("progress")}
           src={pressButton}
           alt="btn_press"
         />
-        <img
+        {/* <img
           className={classes.btnRight}
           src={rightButton}
           alt="btn_right"
@@ -112,7 +107,7 @@ export default function Timezone({ toNextPage }) {
           onMouseLeave={() =>
             setPressed({ direction: "right", isPress: false })
           }
-        />
+        /> */}
       </section>
     </div>
   );
