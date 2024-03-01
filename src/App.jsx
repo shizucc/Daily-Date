@@ -7,9 +7,10 @@ import OnTheWayDay from "./components/bcn_03b/OnTheWayDay";
 import Seblak from "./components/bcn_04b/Seblak";
 import Dinner from "./components/bcn_05b/Dinner";
 import OnTheWayAfternoon from "./components/bcn_03c/OnTheWayAfternoon";
+import FeedFish from "./components/bcn_04c/FeedFish";
 
 function App() {
-  const [currentPage, setCurrentPage] = useState("bcn_05b");
+  const [currentPage, setCurrentPage] = useState("bcn_04c");
   const [isPageDimmed, setIsPageDimmed] = useState(false);
 
   function fadeIn() {
@@ -57,6 +58,7 @@ function App() {
       {currentPage === "bcn_03c" && (
         <OnTheWayAfternoon toNextPage={handleNextPage} />
       )}
+      {currentPage === "bcn_04c" && <FeedFish toNextPage={handleNextPage} />}
     </>
   );
 }

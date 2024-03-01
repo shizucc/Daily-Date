@@ -1,0 +1,45 @@
+.canvas {
+    background-image: url("../assets/screen.png");
+    height: 1920px;
+    width: 1080px;
+    background-size: cover;
+    background-color: whitesmoke;
+}
+
+.feedControl {
+    position: relative;
+    
+}
+.spreadButton {
+    position: absolute;
+    top: 1400px;
+    left: 400px;
+    width: 300px;
+}
+.spreadButton:active {
+    width: 280px;
+}
+
+.bucket {
+    position: absolute;
+    width: 300px;
+    top: 1400px;
+    left: 50px;
+}
+
+.waterFitler {
+    position: relative;
+
+}
+.water {
+    position: absolute;
+    width: 1080px;
+    height: 1290px;
+    background-color: rgba(	74, 180, 230, 0.19);
+    z-index: 2;
+}
+
+.snacks {
+    position: relative;
+}
+

@@ -8,7 +8,7 @@ const StyledNextPageButton = styled.button`
   border-radius: 2.5rem;
   top: 1600px;
   left: 750px;
-  font-size: 3.3rem;
+  font-size: 3rem;
   color: #5d3652;
   text-align: start;
 
