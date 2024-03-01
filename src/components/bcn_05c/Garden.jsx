@@ -21,26 +21,27 @@ const RESPONSE_DIALOG_SCRIPT = {
     "eh maksudnya AK JG MW",
     "Tapi besok-besok lagi aja ya ngedatenya",
   ],
+  response3: [
+    "-_-",
+    "Nida tidak asik",
+    "Btw udah sore banget nih, keknya udahan dulu buat hari ini",
+  ],
 };
 const DIALOG_SCRIPT = {
   script0: {
-    question: "mau denger gaa?",
-    answers: ["Mau", "apatuh"],
-  },
-  script1: {
     question: "lanjutin...",
     answers: ["Mari kita nge-", "Bass kubetot"],
   },
-  script2: {
-    question: "mw pulang!",
+  script1: {
+    question: "mw pulang?",
     answers: ["gmw", "maunya bareng terus sama kamu"],
   },
-  script3: {
+  script2: {
     question: "...",
     answers: ["...", "okaii"],
   },
 };
-export default function Garden() {
+export default function Garden({ toNextPage }) {
   const [dialogResponse, setDialogResponse] = useState(
     RESPONSE_DIALOG_SCRIPT.response0
   );
@@ -55,23 +56,53 @@ export default function Garden() {
     }
     return () => clearTimeout(timeout);
   }
-  const handleShowDialogChoices = useCallback(
-    function handleShowDialogChoices() {
-      "Hello";
-      if (dialogResponse == RESPONSE_DIALOG_SCRIPT.response0) {
-        setDialog(DIALOG_SCRIPT.script0);
-      }
-    },
-    [dialogResponse]
-  );
+
+  function handleShowDialogChoices() {
+    if (dialogResponse == RESPONSE_DIALOG_SCRIPT.response0) {
+      setDialog(DIALOG_SCRIPT.script0);
+    } else if (
+      dialogResponse == RESPONSE_DIALOG_SCRIPT.response1 ||
+      dialogResponse == RESPONSE_DIALOG_SCRIPT.response3
+    ) {
+      setDialog(DIALOG_SCRIPT.script1);
+    } else {
+      toNextPage("bcn_06");
+    }
+  }
+
+  function handleSelectAnswer(answer) {
+    setDialog(null);
+
+    if (answer === DIALOG_SCRIPT.script0.answers[0]) {
+      setDialogResponse(RESPONSE_DIALOG_SCRIPT.response1);
+    } else if (answer === DIALOG_SCRIPT.script0.answers[1]) {
+      setDialogResponse(RESPONSE_DIALOG_SCRIPT.response3);
+    } else if (
+      answer === DIALOG_SCRIPT.script1.answers[0] ||
+      DIALOG_SCRIPT.script1.answers[1]
+    ) {
+      setDialogResponse(RESPONSE_DIALOG_SCRIPT.response2);
+    }
+  }
 
   return (
     <div className={classes.canvas}>
-      <RunningResponseDialog
-        script={dialogResponse}
-        onComplete={handleShowDialogChoices}
-      />
-      {dialog && <Dialog question={dialog.question} />}
+      {dialogResponse !== null ? (
+        <RunningResponseDialog
+          key={dialogResponse}
+          script={dialogResponse}
+          onComplete={() => {
+            handleShowDialogChoices();
+          }}
+        />
+      ) : null}
+      {dialog && (
+        <Dialog
+          question={dialog.question}
+          answers={dialog.answers}
+          onSelectAnswer={handleSelectAnswer}
+        />
+      )}
     </div>
   );
 }
