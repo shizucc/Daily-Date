@@ -1,22 +1,16 @@
 import { useEffect, useState } from "react";
 import Motor from "../global_components/Motor";
 import RunningResponseDialog from "../global_components/RunningResponeDialog";
-import classes from "./styles/bcn_07.module.css";
+import classes from "./styles/bcn_01.module.css";
 import Dialog from "../global_components/Dialog";
-const RESPONSE_DIALOG_SCRIPT = [
-  "Makasii buat ngedate hari ini!",
-  "Aku sayang kamu Nida",
-  "Minggu depan ayo ngedate lagi!",
-  "Udah yaa, jangan tidur kemaleman",
-  "Dadahhh!",
-  "...",
-];
+import Clouds from "../global_components/Clouds";
+const RESPONSE_DIALOG_SCRIPT = ["Nidaaa Ayo Ngedate!"];
 
 const DIALOG_SCRIPT = {
-  question: "Mau ngedate lagi?",
-  answers: ["Apasih yang engga buat kamu", "Mana mungkin aku nolak"],
+  question: "mmw ngedate g",
+  answers: ["Gas", "ayo sayangggg"],
 };
-export default function HomeNight({ toNextPage }) {
+export default function HomeMorning({ toNextPage }) {
   const [responseScript, setResponseScript] = useState(null);
   const [dialog, setDialog] = useState(null);
   const [isBoost, setIsBoost] = useState(false);
@@ -31,12 +25,12 @@ export default function HomeNight({ toNextPage }) {
   }, []);
 
   function handleEnd() {
-    setIsBoost(true);
     setDialog(DIALOG_SCRIPT);
   }
 
-  function handleRestartGame() {
-    toNextPage("bcn_01");
+  function handleStartGame() {
+    toNextPage("bcn_02");
+    setIsBoost(true);
   }
   return (
     <div className={classes.canvas}>
@@ -44,7 +38,7 @@ export default function HomeNight({ toNextPage }) {
         <Dialog
           question={DIALOG_SCRIPT.question}
           answers={DIALOG_SCRIPT.answers}
-          onSelectAnswer={handleRestartGame}
+          onSelectAnswer={handleStartGame}
         />
       ) : null}
       {responseScript != null ? (
@@ -55,7 +49,7 @@ export default function HomeNight({ toNextPage }) {
           }}
         />
       ) : null}
-
+      <Clouds />
       <Motor isBoost={isBoost} />
     </div>
   );

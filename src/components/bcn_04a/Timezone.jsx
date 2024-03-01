@@ -10,7 +10,6 @@ import Crane from "./components/Crane";
 import Modal from "../global_components/Modal";
 import { getRandomItemFromList } from "./util";
 import RunningResponseDialog from "../global_components/RunningResponeDialog";
-import DialogResponse from "../global_components/DialogResponse";
 
 export default function Timezone({ toNextPage }) {
   let present = useMemo(() => getRandomItemFromList(PRESENTS), []);

@@ -11,9 +11,10 @@ import FeedFish from "./components/bcn_04c/FeedFish";
 import Garden from "./components/bcn_05c/Garden";
 import OnTheWayNight from "./components/bcn_06/OnTheWayNight";
 import HomeNight from "./components/bcn_07/HomeNight";
+import HomeMorning from "./components/bcn_01/HomeMorning";
 
 function App() {
-  const [currentPage, setCurrentPage] = useState("bcn_07");
+  const [currentPage, setCurrentPage] = useState("bcn_04a");
   const [isPageDimmed, setIsPageDimmed] = useState(false);
 
   function fadeIn() {
@@ -52,6 +53,7 @@ function App() {
 
   return (
     <>
+      {currentPage === "bcn_01" && <HomeMorning toNextPage={handleNextPage} />}
       {currentPage === "bcn_02" && <OnTheWay toNextPage={handleNextPage} />}
       {currentPage === "bcn_03a" && <Gramedia toNextPage={handleNextPage} />}
       {currentPage === "bcn_04a" && <Timezone toNextPage={handleNextPage} />}
