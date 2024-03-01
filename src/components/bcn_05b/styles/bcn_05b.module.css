@@ -1,0 +1,22 @@
+.canvas {
+    background-image: url("../assets/screen.png");
+    height: 1920px;
+    width: 1080px;
+    background-size: cover;
+    background-color: whitesmoke;
+
+}
+
+
+.canvas section {
+    position: relative;
+}
+
+.canvas section h1 {
+    position: absolute;
+    top: 700px;
+    color: whitesmoke;
+    font-size: 6rem;
+    font-weight: 500;
+    text-align: center;
+}

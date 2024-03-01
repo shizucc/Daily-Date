@@ -1,8 +1,7 @@
 .canvas {
-    background-image: url("src/components/bcn_02/assets/screen.png");
+    background-image: url("../assets/screen1.png");
     height: 1920px;
     width: 1080px;
     background-size: cover;
     background-color: whitesmoke;
 }
-

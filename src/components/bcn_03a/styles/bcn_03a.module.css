@@ -1,0 +1,89 @@
+.canvas {
+    background-image: url("../assets/screen.png");
+    height: 1920px;
+    width: 1080px;
+    background-size: cover;
+    background-color: whitesmoke;
+}
+
+.books {
+    position: relative;
+}
+
+.book {
+    position: absolute;
+    height: 12rem;
+    width: 8.5rem;
+    border: 0.5rem solid #5D3652;
+    border-radius: 1rem;
+    animation: shake 4s infinite;
+}
+
+.book:active {
+    opacity: 0.75;
+}
+
+.bookModal{
+  display: flex;
+  align-items: center;
+  padding: 1.25rem;
+}
+
+.bookModal img{
+  width: 27rem;
+}
+.bookModal section {
+  padding: 3rem;
+}
+
+.bookModal h3 {
+  font-size: 3rem;
+  margin: 0;
+}
+.bookModal p {
+  font-size: 2rem;
+}
+
+.bookModal button {
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 0.5rem solid #5D3652;
+  font-size: 2.5rem;
+  font-weight:600;
+  color: #5D3652;
+  background-color:whitesmoke;
+}
+.bookModal button:active{
+  background-color: gray;
+}
+
+.timezoneButton {
+  position: relative;
+  padding: 1.25rem;
+  padding-right: 4rem;
+  border: 0.75rem solid #5D3652;
+  border-radius: 2.5rem;
+  top: 1600px;
+  left: 750px;
+  font-size: 3.75rem;
+  color: #5D3652;
+  text-align: start;
+}
+.timezoneButton:active {
+  background-color: grey;
+}
+
+@keyframes shake {
+    0%, 100% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(5deg);
+    }
+    50% {
+      transform: rotate(-5deg);
+    }
+    75% {
+      transform: rotate(5deg);
+    }
+  }

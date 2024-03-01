@@ -1,11 +1,9 @@
-import classes from "./styles/bcn_02.module.css";
-
-import Motor from ".././global_components/Motor";
-import Clouds from ".././global_components/Clouds";
-import Dialog from "../global_components/Dialog";
-import DialogResponse from "../global_components/DialogResponse";
 import { useState } from "react";
-
+import Birds from "../global_components/Birds";
+import Dialog from "../global_components/Dialog";
+import Motor from "../global_components/Motor";
+import classes from "./styles/bcn_03c.module.css";
+import DialogResponse from "../global_components/DialogResponse";
 const DIALOG_SCRIPT = {
   initialQuestion: {
     question: "Mau Kemana",
@@ -13,39 +11,38 @@ const DIALOG_SCRIPT = {
   },
 };
 
-export default function OnTheWay({ toNextPage }) {
+export default function OnTheWayAfternoon({ toNextPage }) {
   const [dialogResponse, setDialogResponse] = useState(null);
   const [isMotorBoost, setIsMotorBoost] = useState(false);
 
   function handleSelectAnswer(answer) {
     if (answer === "RSM") {
-      setDialogResponse("Ayo Gas!");
-      setIsMotorBoost(true);
-      toNextPage("bcn_03a");
+      setDialogResponse("Kan tadi udah");
+      const timeout = setTimeout(() => {
+        setDialogResponse(null);
+      }, 5000);
+      return () => clearTimeout(timeout);
     } else if (answer === "Makan Seblak") {
-      setDialogResponse("Masih pagi tau! Nanti perut kamu sakit");
+      setDialogResponse("Kamu belum kenyang ya?");
       const timeout = setTimeout(() => {
         setDialogResponse(null);
       }, 5000);
       return () => clearTimeout(timeout);
     } else if (answer === "Taman Mas Kemambang") {
-      setDialogResponse("Nanti aja kalo udah sore");
-      const timeout = setTimeout(() => {
-        setDialogResponse(null);
-      }, 5000);
-      return () => clearTimeout(timeout);
+      setIsMotorBoost(true);
+      setDialogResponse("Ayo Gas!");
+      toNextPage("bcn_04c");
     }
   }
-
   return (
     <div className={classes.canvas}>
+      <DialogResponse dialogText={dialogResponse} />
       <Dialog
         question={DIALOG_SCRIPT.initialQuestion.question}
         answers={DIALOG_SCRIPT.initialQuestion.answers}
         onSelectAnswer={handleSelectAnswer}
       />
-      <DialogResponse dialogText={dialogResponse} />
-      <Clouds />
+      <Birds />
       <Motor isBoost={isMotorBoost} />
     </div>
   );

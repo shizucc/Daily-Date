@@ -1,0 +1,104 @@
+.canvas {
+    background-image: url("../assets/screen.png");
+    height: 1920px;
+    width: 1080px;
+    background-size: cover;
+    background-color: whitesmoke;
+}
+
+.dollsContainer {
+    position:relative;
+}
+
+.dollsContainer img{
+    position: absolute;
+    width: 800px;
+    top: 980px;
+    left: 130px;
+}
+
+.buttons {
+    position: relative;
+}
+
+.buttons .btnLeft{
+    position:absolute;
+    top: 1370px;
+    left: 250px;
+    width: 8.5rem;
+}
+.buttons .btnPress{
+    position:absolute;
+    top: 1370px;
+    left: 475px;
+    width: 8.5rem;
+}
+.buttons .btnRight{
+    position:absolute;
+    top: 1370px;
+    left: 700px;
+    width: 8.5rem;
+}
+
+.buttons img:active {
+    width: 8rem;
+}
+
+.craneContainer {
+    position:relative;
+}
+
+.cranePillar {
+    position: absolute;
+    top: 400px;
+    /* left: 480px; */
+    width: 56px;
+    /* height: 100px; */
+    background-color: #B4B4B4;
+    overflow: hidden;
+    transition: margin-left 0.2s ease;
+}
+.craneCapture {
+    position: absolute;
+}
+ 
+
+.presentModal{
+    display: flex;
+    align-items: center;
+    padding: 1.25rem;
+  }
+  
+  .presentModal img{
+    width: 27rem;
+  }
+  .presentModal section {
+    padding: 3rem;
+  }
+
+  .presentModal h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.5);
+  }
+  .presentModal h3 {
+    font-size: 3rem;
+    margin: 0;
+  }
+  .presentModal p {
+    font-size: 2rem;
+  }
+  .presentModal button {
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 0.5rem solid #5D3652;
+    font-size: 2.5rem;
+    font-weight:600;
+    color: #5D3652;
+    background-color:whitesmoke;
+  }
+
+  .presentModal button:active{
+    background-color: gray;
+  }

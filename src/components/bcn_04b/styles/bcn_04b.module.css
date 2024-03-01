@@ -1,0 +1,20 @@
+.canvas {
+    background-image: url("../assets/screen.png");
+    height: 1920px;
+    width: 1080px;
+    background-size: cover;
+    background-color: whitesmoke;
+}
+
+.note {
+    position: relative;
+}
+
+.note ul {
+    position: absolute;
+    top: 1090px;
+    left: 680px;
+    list-style-type: none;
+    font-size: 1.5rem;
+    font-weight: 300;
+}
