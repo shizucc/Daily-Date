@@ -3,15 +3,16 @@ import DialogResponse from "./DialogResponse";
 
 export default function RunningResponseDialog({ script, onComplete }) {
   const [dialogResponseIndex, setDialogResponseIndex] = useState(0);
-  console.log(script[dialogResponseIndex]);
+
   useEffect(() => {
     let interval;
     const timeout = setTimeout(() => {
       interval = setInterval(() => {
         setDialogResponseIndex((prev) => {
           if (prev === script.length - 1) {
-            clearInterval(interval);
             onComplete();
+            clearInterval(interval);
+            clearTimeout(timeout);
             return prev;
           } else {
             return prev + 1;
@@ -24,7 +25,7 @@ export default function RunningResponseDialog({ script, onComplete }) {
       clearTimeout(timeout);
       clearInterval(interval);
     };
-  }, [script]);
+  }, [onComplete, script]);
 
   return <DialogResponse dialogText={script[dialogResponseIndex]} />;
 }

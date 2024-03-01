@@ -8,9 +8,10 @@ import Seblak from "./components/bcn_04b/Seblak";
 import Dinner from "./components/bcn_05b/Dinner";
 import OnTheWayAfternoon from "./components/bcn_03c/OnTheWayAfternoon";
 import FeedFish from "./components/bcn_04c/FeedFish";
+import Garden from "./components/bcn_05c/Garden";
 
 function App() {
-  const [currentPage, setCurrentPage] = useState("bcn_04c");
+  const [currentPage, setCurrentPage] = useState("bcn_05c");
   const [isPageDimmed, setIsPageDimmed] = useState(false);
 
   function fadeIn() {
@@ -59,6 +60,7 @@ function App() {
         <OnTheWayAfternoon toNextPage={handleNextPage} />
       )}
       {currentPage === "bcn_04c" && <FeedFish toNextPage={handleNextPage} />}
+      {currentPage === "bcn_05c" && <Garden toNextPage={handleNextPage} />}
     </>
   );
 }
