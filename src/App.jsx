@@ -14,7 +14,7 @@ import HomeNight from "./components/bcn_07/HomeNight";
 import HomeMorning from "./components/bcn_01/HomeMorning";
 
 function App() {
-  const [currentPage, setCurrentPage] = useState("bcn_04a");
+  const [currentPage, setCurrentPage] = useState("bcn_01");
   const [isPageDimmed, setIsPageDimmed] = useState(false);
 
   function fadeIn() {
