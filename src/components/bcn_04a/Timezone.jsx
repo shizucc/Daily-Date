@@ -92,12 +92,14 @@ export default function Timezone({ toNextPage }) {
           onMouseUp={() => setPressed({ direction: "left", isPress: false })}
           onMouseLeave={() => setPressed({ direction: "left", isPress: false })}
         /> */}
-        <img
-          className={classes.btnPress}
-          onClick={() => setIsCaptured("progress")}
-          src={pressButton}
-          alt="btn_press"
-        />
+        {isCaptured === "not" ? (
+          <img
+            className={classes.btnPress}
+            onClick={() => setIsCaptured("progress")}
+            src={pressButton}
+            alt="btn_press"
+          />
+        ) : null}
         {/* <img
           className={classes.btnRight}
           src={rightButton}
